@@ -300,6 +300,7 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.rajk2007.kino.ui.RepoInstallerActivity" android:theme="@style/AppTheme" android:exported="false" />
     </application>
     
 </manifest>

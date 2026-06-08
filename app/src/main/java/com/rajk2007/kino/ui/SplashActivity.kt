@@ -75,9 +75,9 @@ class SplashActivity : AppCompatActivity() {
                 val installed = getKey<Boolean>("kino_repos_installed") ?: false
                 val intent = if (!installed) {
                     // Navigate to Repo Installer (Task 6 will implement this, for now use a placeholder or check HAS_DONE_SETUP_KEY)
-                    Intent(this, AccountSelectActivity::class.java)
+                    Intent(this, RepoInstallerActivity::class.java)
                 } else {
-                    Intent(this, AccountSelectActivity::class.java)
+                    Intent(this, RepoInstallerActivity::class.java)
                 }
                 startActivity(intent)
                 finish()
