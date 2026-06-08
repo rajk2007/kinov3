@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#080808">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="80dp">
+
+            <!-- Profile Header Card -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="280dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/profile_gradient_banner" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingBottom="24dp">
+
+                    <FrameLayout
+                        android:layout_width="96dp"
+                        android:layout_height="96dp">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_circle_avatar" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="RK"
+                            android:textColor="#FFFFFF"
+                            android:textSize="32sp"
+                            android:textStyle="bold" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Raj Karmakar"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="⭐ Premium Member"
+                        android:textColor="#F5C518"
+                        android:textSize="13sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Edit Profile"
+                        android:textColor="#FFFFFF"
+                        app:cornerRadius="20dp"
+                        app:strokeColor="#FFFFFF" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- Playback Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_card_kino"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PLAYBACK"
+                    android:textColor="#8A8A8A"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <!-- Row: Default Quality -->
+                <RelativeLayout
+                    android:id="@+id/row_quality"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Default Quality"
+                        android:textColor="#F5F5F5"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/val_quality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text="Auto >"
+                        android:textColor="#8A8A8A" />
+                </RelativeLayout>
+
+                <!-- Row: Default Audio -->
+                <RelativeLayout
+                    android:id="@+id/row_audio"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Default Audio"
+                        android:textColor="#F5F5F5"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/val_audio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text="Hindi >"
+                        android:textColor="#8A8A8A" />
+                </RelativeLayout>
+
+                <!-- Row: Autoplay -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Autoplay Next Episode"
+                        android:textColor="#F5F5F5"
+                        android:textSize="16sp" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_autoplay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        app:thumbTint="#E50914" />
+                </RelativeLayout>
+
+                <!-- Row: Skip Intro -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Skip Intro Automatically"
+                        android:textColor="#F5F5F5"
+                        android:textSize="16sp" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_skip_intro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        app:thumbTint="#E50914" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- Content Sources -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_card_kino"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONTENT SOURCES"
+                    android:textColor="#8A8A8A"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/repo_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+ Add Repository"
+                    android:textColor="#E50914" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
