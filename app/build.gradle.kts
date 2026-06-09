@@ -85,17 +85,7 @@ android {
     signingConfigs {
         // We just use SIGNING_KEY_ALIAS here since it won't change
         // so won't kill the configuration cache.
-        if (System.getenv("SIGNING_KEY_ALIAS") != null) {
-            create("prerelease") {
-                val tmpFilePath = System.getProperty("user.home") + "/work/_temp/keystore/"
-                val prereleaseStoreFile: File? = File(tmpFilePath).listFiles()?.first()
-
-                storeFile = prereleaseStoreFile?.let { file(it) }
-                storePassword = System.getenv("SIGNING_STORE_PASSWORD")
-                keyAlias = System.getenv("SIGNING_KEY_ALIAS")
-                keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
-            }
-        }
+        // Removed prerelease signing config as per instructions.
     }
 
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -142,6 +132,7 @@ android {
         }
         debug {
             isDebuggable = true
+            isMinifyEnabled = false
             applicationIdSuffix = ".debug"
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -155,17 +146,7 @@ android {
         create("stable") {
             dimension = "state"
         }
-        create("prerelease") {
-            dimension = "state"
-            applicationIdSuffix = ".prerelease"
-            if (signingConfigs.names.contains("prerelease")) {
-                signingConfig = signingConfigs.getByName("prerelease")
-            } else {
-                logger.warn("No prerelease signing config!")
-            }
-            versionNameSuffix = "-PRE"
-            versionCode = (System.currentTimeMillis() / 60000).toInt()
-        }
+        // Removed prerelease flavor as per instructions.
     }
 
     compileOptions {
@@ -281,13 +262,13 @@ dependencies {
 
 tasks.register<Jar>("androidSourcesJar") {
     archiveClassifier.set("sources")
-    from(android.sourceSets.getByName("main").java.directories) // Full Sources
+    from(android.sourceSets.getByName("main").java.srcDirs) // Full Sources (FIX D)
 }
 
 tasks.register<Copy>("copyJar") {
     dependsOn("build", ":library:jvmJar")
     from(
-        "build/intermediates/compile_app_classes_jar/prereleaseDebug/bundlePrereleaseDebugClassesToCompileJar",
+        "build/intermediates/compile_app_classes_jar/stableDebug/bundleStableDebugClassesToCompileJar",
         "../library/build/libs"
     )
     into("build/app-classes")
@@ -326,7 +307,7 @@ dokka {
     moduleName = "App"
     dokkaSourceSets {
         configureEach {
-            suppress = name != "prereleaseDebug"
+            suppress = name != "stableDebug"
             analysisPlatform = KotlinPlatform.JVM
             displayName = "JVM"
             documentedVisibilities(

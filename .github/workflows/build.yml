@@ -17,28 +17,29 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Check wrapper files
-        run: |
-          ls -la gradlew || echo "ERROR gradlew missing"
-          ls -la gradle/wrapper/gradle-wrapper.jar || echo "ERROR jar missing"
-
       - name: Grant permission
         run: chmod +x gradlew
 
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace 2>&1 | tee build.log
-
-      - name: Find APK files
-        if: always()
-        run: find . -name "*.apk" -type f 2>/dev/null || echo "No APK found"
+        
+      - name: Verify APK was created
+        run: |
+          APK_PATH=$(find . -name "*.apk" -type f | head -1)
+          if [ -z "$APK_PATH" ]; then
+            echo "BUILD FAILED: No APK was generated"
+            cat build.log | grep -E "error:|FAILED|Exception" | head -20
+            exit 1
+          else
+            echo "SUCCESS: APK found at $APK_PATH"
+            ls -la "$APK_PATH"
+          fi
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
-        if: always()
         with:
           name: Kino-APK
           path: |
-            app/build/outputs/apk/debug/app-debug.apk
             **/build/outputs/apk/**/*.apk
 
       - name: Upload build log
