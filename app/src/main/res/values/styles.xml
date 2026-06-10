@@ -22,14 +22,42 @@
     <style name="AppTheme" parent="Theme.CloudStream"/>
     <style name="AppTheme.NoActionBar" parent="Theme.CloudStream.NoActionBar"/>
 
-    <style name="BlackButton" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/primaryBlackBackground</item>
-        <item name="android:textColor">@color/textColor</item>
+    <style name="NiceButton">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="iconSize">20dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
     </style>
 
-    <style name="WhiteButton" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/primaryWhite</item>
-        <item name="android:textColor">@color/primaryBlackBackground</item>
+    <style name="BlackButton" parent="NiceButton">
+        <item name="strokeColor">?attr/textColor</item>
+        <item name="backgroundTint">?attr/iconGrayBackground</item>
+        <item name="iconTint">?attr/textColor</item>
+        <item name="android:textColor">?attr/textColor</item>
+    </style>
+
+    <style name="WhiteButton" parent="NiceButton">
+        <item name="strokeColor">?attr/iconGrayBackground</item>
+        <item name="backgroundTint">?attr/textColor</item>
+        <item name="iconTint">?attr/iconGrayBackground</item>
+        <item name="android:textColor">?attr/iconGrayBackground</item>
+    </style>
+
+    <style name="BlackButton.Dialog" parent="BlackButton">
+        <item name="android:insetTop">4dp</item>
+        <item name="android:insetBottom">4dp</item>
+    </style>
+
+    <style name="WhiteButton.Dialog" parent="WhiteButton">
+        <item name="android:insetTop">4dp</item>
+        <item name="android:insetBottom">4dp</item>
     </style>
 
     <style name="SettingsItem" parent="Widget.MaterialComponents.TextView">
@@ -251,5 +279,16 @@
         <item name="android:scrollHorizontally">true</item>
         <item name="android:marqueeRepeatLimit">marquee_forever</item>
         <item name="android:ellipsize">marquee</item>
+    </style>
+
+    <style name="Theme.AlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
+        <item name="android:windowBackground">@drawable/dialog__window_background</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textColorPrimary">?attr/grayTextColor</item>
+        <item name="buttonBarPositiveButtonStyle">@style/WhiteButton.Dialog</item>
+        <item name="buttonBarNegativeButtonStyle">@style/BlackButton.Dialog</item>
+        <item name="buttonBarNeutralButtonStyle">@style/BlackButton.Dialog</item>
     </style>
 </resources>
