@@ -291,4 +291,70 @@
         <item name="buttonBarNegativeButtonStyle">@style/BlackButton.Dialog</item>
         <item name="buttonBarNeutralButtonStyle">@style/BlackButton.Dialog</item>
     </style>
+
+    <style name="SmallWhiteButton" parent="WhiteButton">
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginStart">0dp</item>
+        <item name="android:layout_marginEnd">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="iconPadding">0dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
+    <style name="SearchBox">
+        <item name="android:background">@drawable/bg_color_both</item>
+        <item name="android:minWidth">40dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">7dp</item>
+        <item name="android:paddingRight">7dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="textColor">?attr/textColor</item>
+        <item name="android:textColor">?attr/textColor</item>
+        <item name="android:layout_marginLeft">1dp</item>
+        <item name="android:layout_marginRight">1dp</item>
+        <item name="android:layout_marginTop">1dp</item>
+    </style>
+
+    <style name="DubButton" parent="@style/SearchBox">
+        <item name="android:text">@string/app_dubbed_text</item>
+        <item name="textColor">?attr/primaryGrayBackground</item>
+        <item name="android:textColor">?attr/primaryGrayBackground</item>
+    </style>
+
+    <style name="SubButton" parent="@style/SearchBox">
+        <item name="android:text">@string/app_subbed_text</item>
+    </style>
+
+    <style name="EpisodeTextButton" parent="@style/SearchBox">
+        <item name="android:text">@string/episode_text</item>
+    </style>
+
+    <style name="TypeButton" parent="@style/SearchBox">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:text">@string/quality_hd</item>
+    </style>
+
+    <style name="RatingButton" parent="@style/SearchBox">
+        <item name="android:minWidth">40dp</item>
+        <item name="drawableTint">?attr/textColor</item>
+        <item name="drawableSize">10sp</item>
+        <item name="drawableEndCompat">@drawable/kid_star_24px</item>
+    </style>
+
+    <style name="HomePlayUnderlayProgress">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">4dp</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="trackColor">@color/transparent</item>
+        <item name="indicatorColor">?attr/colorPrimary</item>
+    </style>
 </resources>
